@@ -87,9 +87,9 @@ async def start_command(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton("🎥 More Videos Links 🔥", url="https://t.me/FREE_ADULT_VIDEO"),
-                ]
+                ],
                 [
-                    InlineKeyboardButton("Stickers🔞", url="https://t.me/AdultStickers_18")
+                    InlineKeyboardButton("Stickers🔞", url="https://t.me/AdultStickers_18"),
                     InlineKeyboardButton("Collection 🗃️", url="https://t.me/pervertcollection")
                 ]
             ]
