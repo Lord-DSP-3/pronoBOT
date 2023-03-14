@@ -16,9 +16,7 @@ from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
 
 
-
-
-@Bot.on_message(filters.command('start') & filters.private & subscribed)
+@Bot.on_message(filters.command('info') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     if not await present_user(id):
@@ -88,13 +86,14 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    InlineKeyboardButton("BOT INFO", callback_data = "about"),
+                    InlineKeyboardButton("BOT DEV", url="https://t.me/AnimeRobots")
                 ]
             ]
         )
-        await message.reply_text(
-            text = START_MSG.format(
+        await message.reply_photo(
+            photo="https://telegra.ph/file/d89c5009f508c1f260268.jpg",
+            caption = START_MSG.format(
                 first = message.from_user.first_name,
                 last = message.from_user.last_name,
                 username = None if not message.from_user.username else '@' + message.from_user.username,
@@ -102,7 +101,6 @@ async def start_command(client: Client, message: Message):
                 id = message.from_user.id
             ),
             reply_markup = reply_markup,
-            disable_web_page_preview = True,
             quote = True
         )
         return
@@ -110,7 +108,7 @@ async def start_command(client: Client, message: Message):
     
 #=====================================================================================##
 
-WAIT_MSG = """"<b>Processing ...</b>"""
+WAIT_MSG = """"<b>Processing...</b>"""
 
 REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
 
@@ -123,7 +121,7 @@ async def not_joined(client: Client, message: Message):
     buttons = [
         [
             InlineKeyboardButton(
-                "Join Channel",
+                "❗ Join Channel ❗",
                 url = client.invitelink)
         ]
     ]
@@ -131,7 +129,7 @@ async def not_joined(client: Client, message: Message):
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text = 'Try Again',
+                    text = '♻️ Try Again ♻️',
                     url = f"https://t.me/{client.username}?start={message.command[1]}"
                 )
             ]
