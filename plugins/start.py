@@ -16,7 +16,7 @@ from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
 
 
-@Bot.on_message(filters.command('info') & filters.private & subscribed)
+@Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
     if not await present_user(id):
@@ -86,20 +86,23 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("BOT INFO", callback_data = "about"),
-                    InlineKeyboardButton("BOT DEV", url="https://t.me/AnimeRobots")
+                    InlineKeyboardButton("🎥 More Videos Links 🔥", url="https://t.me/FREE_ADULT_VIDEO"),
+                ]
+                [
+                    InlineKeyboardButton("Stickers🔞", url="https://t.me/AdultStickers_18")
+                    InlineKeyboardButton("Collection 🗃️", url="https://t.me/pervertcollection")
                 ]
             ]
         )
-        await message.reply_photo(
-            photo="https://telegra.ph/file/d89c5009f508c1f260268.jpg",
-            caption = START_MSG.format(
+        await message.reply_text(
+            text = START_MSG.format(
                 first = message.from_user.first_name,
                 last = message.from_user.last_name,
                 username = None if not message.from_user.username else '@' + message.from_user.username,
                 mention = message.from_user.mention,
                 id = message.from_user.id
             ),
+            disable_web_page_preview = True,
             reply_markup = reply_markup,
             quote = True
         )
@@ -108,7 +111,7 @@ async def start_command(client: Client, message: Message):
     
 #=====================================================================================##
 
-WAIT_MSG = "⏳"
+WAIT_MSG = "📂"
 
 REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
 
