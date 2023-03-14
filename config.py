@@ -37,7 +37,7 @@ FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 #start message
-START_MSG = os.environ.get("START_MESSAGE", "Hello {first}\n\nThis bot will let access to all kind of awesome pron content where channels are restricted.")
+START_MSG = os.environ.get("START_MESSAGE", "Hey {first} 🍻\n**This bot will let access to all kind of awesome P🔞RN content for free.**\n⚠️__Since it's free service: you cannont save or forward content.__")
 try:
     ADMINS=[]
     for x in (os.environ.get("ADMINS", "").split()):
@@ -46,7 +46,7 @@ except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
 
 #Force sub message 
-FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {first}\n\n<b>⚠️You need to join in my Channel to use This bot!\n\nJoin Channel or fuck off</b>")
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "⚠️𝗬𝗼𝘂 𝗻𝗲𝗲𝗱 𝘁𝗼 𝗷𝗼𝗶𝗻 𝗶𝗻 𝗺𝘆 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 𝘁𝗼 𝘂𝘀𝗲 𝗧𝗵𝗶𝘀 𝗯𝗼𝘁!\n👉🏻 @FREE_ADULT_VIDEO\n👉🏻 @pervertcollection \n__Join Channel or fuck off__")
 
 #set your Custom Caption here, Keep None for Disable Custom Caption
 CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
