@@ -5,9 +5,13 @@ from config import ADMINS, BOT_STATS_TEXT, USER_REPLY_TEXT
 from datetime import datetime
 from helper_func import get_readable_time
 
-@Bot.on_message(filters.command('stats') & filters.user(ADMINS))
-async def stats(bot: Bot, message: Message):
+LWAIT_MSG = "⏳"
+
+@Bot.on_message(filters.command('stats') & filters.chat(AG) & filters.user(ADMINS))
+async def get_users(client: Bot, message: Message):
     now = datetime.now()
+    msg = await client.send_message(chat_id=message.chat.id, text=LWAIT_MSG)
+    users = await full_userbase()
     delta = now - bot.uptime
     time = get_readable_time(delta.seconds)
-    await message.reply(BOT_STATS_TEXT.format(uptime=time))
+    await msg.edit(f"#BOT_STATS\n👥Total Users: {len(users)}\n📡Uptime: {time}")
